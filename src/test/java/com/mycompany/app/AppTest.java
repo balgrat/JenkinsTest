@@ -44,9 +44,9 @@ public class AppTest
         driver.findElement(By.id("id_abstract")).sendKeys("This is the part where the user can write an abstract");
         driver.findElement(By.id("id_title")).submit(); //just added to wait a bit on the website to see that it is filling in some things ;)
 
-
+        System.out.println("Test passed!");
+        
         driver.close();
-        System.exit(0);
         
 /*
         // declaration and instantiation of objects/variables
