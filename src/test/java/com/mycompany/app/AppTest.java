@@ -82,7 +82,7 @@ public class AppTest
     }
 
     @Test
-    public void browserStackTest()
+    public void browserStackTest() throws Exception
     {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("browser", "Chrome");
