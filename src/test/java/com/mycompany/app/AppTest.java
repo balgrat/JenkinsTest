@@ -95,11 +95,11 @@ public class AppTest
         caps.setCapability("browserstack.local", "true");
 
         WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
-        driver.get("http://127.0.0.1:8000/");
+        driver.get("https://www.browserstack.com/");
 
         System.out.println("next step");
 
-        driver.findElement(By.xpath("//*[@id=\"page-top\"]/header/div/div/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"primary-menu\"]/li[6]/a")).click();
 
         System.out.println(driver.getTitle());
         driver.quit();
