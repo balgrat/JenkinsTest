@@ -1,3 +1,7 @@
+package com.mycompany.app;
+
+import static org.junit.Assert.assertTrue;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
