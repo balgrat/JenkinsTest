@@ -35,4 +35,11 @@ public class Demo {
         driver.quit();
 
     }
+    
+    @Test
+    public void shouldAnswerWithTrue()
+    {
+        System.out.println("Is this part also executed if we add the @Test annotation?");
+        assertTrue( true );
+    }
 }
