@@ -92,13 +92,14 @@ public class AppTest
         caps.setCapability("resolution", "1024x768");
         caps.setCapability("browserstack.debug", true);
         caps.setCapability("browserstack.networkLogs", true);
+        caps.setCapability("browserstack.local", "true");
 
         WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
-        driver.get("http://www.google.com");
-        WebElement element = driver.findElement(By.name("q"));
+        driver.get("http://127.0.0.1:8000/");
 
-        element.sendKeys("BrowserStack");
-        element.submit();
+        System.out.println("next step");
+
+        driver.findElement(By.xpath("//*[@id=\"page-top\"]/header/div/div/a")).click();
 
         System.out.println(driver.getTitle());
         driver.quit();
