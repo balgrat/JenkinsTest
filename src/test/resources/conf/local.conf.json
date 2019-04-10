@@ -1,7 +1,7 @@
 {
   "server": "hub-cloud.browserstack.com",
-  "user": "BROWSERSTACK_USERNAME",
-  "key": "BROWSERSTACK_ACCESS_KEY",
+  "user": "jeroenveltmans1",
+  "key": "BwHWqoz9bA29UXwuBGmT",
 
   "capabilities": {
     "build": "junit-browserstack",

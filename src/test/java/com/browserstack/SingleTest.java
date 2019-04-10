@@ -10,10 +10,10 @@ public class SingleTest extends BrowserStackJUnitTest {
 
   @Test
   public void test() throws Exception {
-    driver.get("https://www.google.com/ncr");
-    WebElement element = driver.findElement(By.name("q"));
-    element.sendKeys("BrowserStack");
-    element.submit();
+    driver.get("http://connectid.pythonanywhere.com/");
+
+    driver.findElement(By.xpath("//*[@id=\"page-top\"]/header/div/div/a")).click();
+
     Thread.sleep(5000);
 
     assertEquals("BrowserStack - Google Search", driver.getTitle());
