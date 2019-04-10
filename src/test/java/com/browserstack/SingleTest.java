@@ -16,6 +16,6 @@ public class SingleTest extends BrowserStackJUnitTest {
 
     Thread.sleep(5000);
 
-    assertEquals("BrowserStack - Google Search", driver.getTitle());
+    assertEquals("LinkedIn Login, LinkedIn Sign in | LinkedIn", driver.getTitle());
   }
 }
