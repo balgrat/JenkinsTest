@@ -1,10 +1,10 @@
 {
   "server": "hub-cloud.browserstack.com",
-  "user": "jeroenveltmans1",
-  "key": "BwHWqoz9bA29UXwuBGmT",
+  "user": "no",
+  "key": "no",
 
   "capabilities": {
-    "build": "junit-browserstack",
+    "build": "jenkins",
     "name": "parallel_test",
     "browserstack.debug": true
   },
