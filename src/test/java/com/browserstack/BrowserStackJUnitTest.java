@@ -1,16 +1,21 @@
 package com.browserstack;
 import com.browserstack.local.Local;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
@@ -97,6 +102,53 @@ public class BrowserStackJUnitTest {
     @After
     public void tearDown() throws Exception {
         driver.quit();
+
+        String username = System.getenv("BROWSERSTACK_USERNAME");
+        if(username == null) {
+            username = (String) config.get("user");
+        }
+
+        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+        if(accessKey == null) {
+            accessKey = (String) config.get("key");
+        }
+
+        String sessionid = "6cb694c7e467e10f1c27fbcbaab94024f5bab224";
+
+        URI uri = new URI("https://" +username+ ":"+accessKey+"@api.browserstack.com/automate/sessions/"+sessionid+".json");
+        HttpPut putRequest = new HttpPut(uri);
+
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add((new BasicNameValuePair("status", "passed")));
+        nameValuePairs.add((new BasicNameValuePair("reason", "junit test didn't pass")));
+        putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+        HttpClientBuilder.create().build().execute(putRequest);
+
         if(l != null) l.stop();
+    }
+
+    public static void mark() throws URISyntaxException, UnsupportedEncodingException, IOException {
+        String username = System.getenv("BROWSERSTACK_USERNAME");
+        if(username == null) {
+            username = (String) config.get("user");
+        }
+
+        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+        if(accessKey == null) {
+            accessKey = (String) config.get("key");
+        }
+
+        String sessionid = "6cb694c7e467e10f1c27fbcbaab94024f5bab224";
+
+        URI uri = new URI("https://" +username+ ":"+accessKey+"@api.browserstack.com/automate/sessions/"+sessionid+".json");
+        HttpPut putRequest = new HttpPut(uri);
+
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add((new BasicNameValuePair("status", "failed")));
+        nameValuePairs.add((new BasicNameValuePair("reason", "junit test didn't pass")));
+        putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+        HttpClientBuilder.create().build().execute(putRequest);
     }
 }
