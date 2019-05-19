@@ -1,6 +1,9 @@
 language: java
 
-scripts:
-  - echo 'add scripts for custom commands'
-  - mvn test parallel
-  - echo 'done with the scripts'
+branches:
+  only:
+  - junit
+  except:
+  - master
+
+script: echo 'hello'
